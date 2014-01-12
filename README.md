@@ -12,7 +12,7 @@ This is a collection of dead-simple shell scripts that configure, build, and ins
 - I require a specific architecture target or optimization level.
 - I have trust issues.
 
- With many packages and multiple platforms, I tend to forget the specifics and quirks needed to build each package under each OS, so these scripts encode this knowledge.
+With many packages and multiple platforms, I tend to forget the specifics and quirks needed to build each package under each OS, so these scripts encode this knowledge.
 
 The primary objectives of this collection are simplicity and convenience to me in my work. Most of these scripts simply do `configure` `&&` `make` `&&` `make install` but I can't remember which ones don't, and that's the point. And, yes, I'm tossing away all of the power and flexibility of these packages' build mechanisms by encoding defaults in scripts, but given my specific target platforms and use cases, it serves me.
 

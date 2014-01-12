@@ -7,7 +7,7 @@ if [ -n "$1" ]; then
 fi
 
 if [[ $IS_MINGW ]]; then
-	make && cp xxd.exe $PREFIX/bin
+    make && cp xxd.exe $PREFIX/bin
 else
-	make && cp xxd $PREFIX/bin
+    make && cp xxd $PREFIX/bin
 fi

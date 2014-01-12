@@ -11,7 +11,7 @@ fi
 # I disable it everywhere for consistency.
 
 ./configure --disable-threads \
-			--prefix=$PREFIX \
+            --prefix=$PREFIX \
     && make \
     && make install
 

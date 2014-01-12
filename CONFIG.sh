@@ -17,20 +17,20 @@ export CFLAGS="-O2"
 # Set flags to indicate operating system.
 
 if [ $(uname -s) == "Linux" ]; then
-	export IS_LINUX=1
+    export IS_LINUX=1
 fi
 if [ $(uname -s) == "Darwin" ]; then
-	export IS_MACOS=1
+    export IS_MACOS=1
 fi
 if [ $(uname -s) == "MINGW32_NT-6.1" ]; then
-	export IS_MINGW=1
+    export IS_MINGW=1
 fi
 
 # INSTALL_PREFIX gives the destination to which INSTALL.sh will copy staged
 # package contents.
 
 if [[ $IS_MINGW ]]; then
-	export INSTALL_PREFIX=C:/MinGW
+    export INSTALL_PREFIX=C:/MinGW
 else
-	export INSTALL_PREFIX=/usr/local
+    export INSTALL_PREFIX=/usr/local
 fi

@@ -10,6 +10,6 @@ fi
 # to lay you an egg like so.
 
 ./configure --with-internal-glib \
-			--prefix=$PREFIX \
+            --prefix=$PREFIX \
     && make \
     && make install

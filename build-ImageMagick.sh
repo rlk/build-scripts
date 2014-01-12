@@ -10,7 +10,7 @@ fi
 # trees.
 
 ./configure --without-x \
-			--without-perl \
-			--prefix=$PREFIX \
+            --without-perl \
+            --prefix=$PREFIX \
     && make \
     && make install
