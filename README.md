@@ -8,7 +8,7 @@ This is a collection of dead-simple shell scripts that configure, build, and ins
 - I'm working on a system where I don't have administrative privilege.
 - I need to debug into a dependency.
 - Packages don't exist, such as for ODE or Mini-XML under Mac OS X.
-- I want to produce a Windows binary using MinGW and no package system exists.
+- I'm using MinGW under Windows, which provides only a minimal set of tools.
 - I require a specific architecture target or optimization level.
 - I have trust issues.
 
@@ -22,22 +22,26 @@ A build script may operate upon its related source tree regardless of that tree'
 
 ## Contents
 
--	`SOURCES.md` gives a list of URLs to source packages. Far from exhaustive, this list is a record of packages I've successfully used. It facilitates the download of updates.
+-   `build-*.sh` performs the build for a specific package. These scripts receive the name of the source directory on the command line. For example:
+
+        ./build-SDL2.sh src/SDL2-2.0.0
+
+    Each script's name matches that of the package it builds. Packages are inconsistently named, thus the scripts are inconsistently named.
 
 -   `CONFIG.sh` defines the build configuration, most notably the prefix giving the install destination. This script is sourced by the build scripts.
 
--	`build-*.sh` performs the build for a specific package. These scripts receive the name of the source directory on the command line. For example:
+-   `INSTALL.sh` copies contents of `dst` to its configured global destination.
 
-		./build-SDL2.sh src/SDL2-2.0.0
+        sudo ./INSTALL.sh
 
-	Each script's name matches that of the package it builds. Packages are inconsistently named, thus the scripts are inconsistently named.
-
--	`INSTALL.sh` copies contents of `dst` to its configured global destination.
-
-		sudo ./INSTALL.sh
+-   `SOURCES.md` gives a list of URLs to source packages. Far from exhaustive, this list is a record of packages I've successfully used. It facilitates the download of updates.
 
 ## Notes
 
-Staging installation to a local directory can corrupt the generation of `pkgconfig` files. To rectify this, the value of `PREFIX` should be substituted wherever it appears in the staged installation. `INSTALL.sh` could and perhaps should do this.
+- Some packages depend upon others, and a build might not be able to find dependencies that have been staged to a local directory. One could either modify the dependent build to scan the staging directry, or simply perform a global installation of the dependency before the dependent build. The latter is easier. For example, `libpng` depends upon `zlib`. On a bare system, run `build-zlib` followed by `INSTALL.sh` before running `build-libpng`. Likewise `freetype` depends upon `libpng`.
 
-If configured with `-g`, debugging information is written to the generated libraries. If the source trees are allowed to remain in `src` then the debugger will find them.
+- Staging installation to a local directory can corrupt the generation of `pkgconfig` files. To rectify this, the value of `PREFIX` should be substituted wherever it appears in the staged installation. `INSTALL.sh` could and perhaps should do this.
+
+- If configured with `-g`, debugging information is written to the generated libraries. If the source trees are allowed to remain in `src` then the debugger will find them. This is handy.
+
+- Certain package / OS combinations are untested. For example, I've never had a reason to compile autotools from source under MinGW. Likewise, packages do evolve. Please alert me to any broken builds.

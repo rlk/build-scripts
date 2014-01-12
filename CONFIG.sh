@@ -6,7 +6,8 @@
 
 export PREFIX=$(PWD)/dst
 
-# Let make take advantage of multiple processor cores.
+# Let make take advantage of multiple processor cores. Some versions of MinGW
+# seem to deadlock instead.
 
 export MAKEFLAGS="-j4"
 
