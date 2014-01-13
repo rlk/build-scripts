@@ -41,7 +41,7 @@ A build script may operate upon its related source tree regardless of that tree'
 
 - Some packages depend upon others, and a build might not be able to find dependencies that have been staged to a local directory. One could either modify the dependent build to scan the staging directry, or simply perform a global installation of the dependency before the dependent build. The latter is easier. For example, `libpng` depends upon `zlib`. On a bare system, run `build-zlib` followed by `INSTALL.sh` before running `build-libpng`.
 
-- Staging installation to a local directory can corrupt the generation of `pkgconfig` files. To rectify this, the value of `PREFIX` should be substituted wherever it appears in the staged installation. `INSTALL.sh` could and perhaps should do this.
+- Staging installation to a local directory can corrupt the generation of `pkgconfig` and libtool `.la`. files. To rectify this, the value of `PREFIX` should be replaced with `INSTALL_PREFIX` wherever it appears in the staged installation. `INSTALL.sh` could and perhaps should do this. Call me old fashioned, but I don't rely upon these files, and I'd just as quickly delete them as fix them.
 
 - If configured with `-g`, debugging information is written to the generated libraries. If the source trees are allowed to remain in `src` then the debugger will find them. This is handy.
 
