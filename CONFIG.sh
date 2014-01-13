@@ -12,8 +12,8 @@ fi
 # PREFIX gives the location passed to a build system for installation, usually
 # `configure --prefix`.
 
-#export PREFIX=$INSTALL_PREFIX
-export PREFIX=$PWD/dst
+export PREFIX=$INSTALL_PREFIX
+#export PREFIX=$PWD/dst
 
 # Let make take advantage of multiple processor cores. Some versions of MinGW
 # seem to deadlock instead.
