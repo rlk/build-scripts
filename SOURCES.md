@@ -44,3 +44,5 @@ Note that builds do change and that current build scripts may only support recen
 - [xxd-1.10.tar.gz](http://grail.cba.csuohio.edu/~somos/xxd-1.10.tar.gz)
 
 - [zlib-1.2.8.tar.gz](http://zlib.net/zlib-1.2.8.tar.gz)
+
+- [zip30.tar.gz](http://downloads.sourceforge.net/project/infozip/Zip%203.x%20%28latest%29/3.0/zip30.tar.gz)
